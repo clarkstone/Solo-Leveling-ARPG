@@ -1,30 +1,38 @@
-# Eternal Realms - Text-Based RPG
+# Solo Leveling: The System - Text-Based RPG
 
-A complete text-based role-playing game built in Python with character creation, combat, inventory management, and world exploration.
+A complete text-based role-playing game inspired by the Solo Leveling manhwa, featuring Hunter ranks, Shadow Army mechanics, and the System interface.
 
 ## Features
 
-⚔️ **Character System**
-- 4 unique classes: Warrior, Mage, Rogue, Cleric
-- Level progression with stat growth
-- HP, MP, Attack, Defense, and Magic stats
+🌑 **Hunter System**
+- 6 unique Hunter classes: Fighter, Tanker, Ranger, Assassin, Healer, Mage
+- Hunter ranking system from E-Rank to National Level
+- Level progression with automatic rank promotions
+- Double awakening mechanic for Shadow Monarch potential
 
-🎮 **Gameplay**
-- Turn-based combat system with multiple attack options
-- Exploration of different locations
-- Random enemy encounters
-- Item shop with weapons, armor, and potions
+⚔️ **Shadow Army System**
+- Extract shadows from defeated enemies
+- Command shadows with different ranks (Soldier to Monarch)
+- Summon shadows in combat for assistance
+- Build your army of extracted shadows
+
+🎮 **System Interface**
+- Daily quests with rewards
+- System messages and notifications
+- Quest tracking and completion
+- Progress monitoring
 
 🌍 **Game World**
-- Multiple interconnected locations
-- Town, Forest, Dragon's Cave, and Shop
-- Each area with unique enemies and challenges
+- Hunter Association hub
+- Dungeon instances with multiple difficulties
+- Training grounds for stat improvement
+- Hunter's shop for equipment
 
-💾 **Features**
+💾 **Advanced Features**
+- Dungeon runs with scaling difficulty
 - Save/load game functionality
 - Inventory management
-- Gold and experience system
-- Persistent game state
+- Gold and experience systems
 
 ## Requirements
 
@@ -43,155 +51,221 @@ python main.py
 
 ## How to Play
 
-### Character Creation
-1. Enter your character's name
-2. Choose your class:
-   - **Warrior**: High HP and attack, low magic
-   - **Mage**: High magic, low HP
-   - **Rogue**: Balanced stats, high attack
-   - **Cleric**: Good magic and healing
+### Hunter Awakening
+1. Enter your name
+2. Choose your Hunter class:
+   - **Fighter**: Balanced combat specialist
+   - **Tanker**: High defense and HP
+   - **Ranger**: Ranged combat expert
+   - **Assassin**: High attack, low defense
+   - **Healer**: Support and recovery
+   - **Mage**: Magical attacks
 
 ### Game Controls
 
 **Main Menu Options:**
-1. **Explore** - Search the current area for enemies and treasure
-2. **Travel** - Move to different locations
+1. **Explore/Action** - Enter dungeons, train, or perform location-specific actions
+2. **Travel** - Move between different locations
 3. **Inventory** - View your items and equipment
-4. **Status** - Check your character's stats and progress
-5. **Shop** - Buy items (only available in town)
-6. **Save Game** - Save your progress
-7. **Quit** - Exit the game
+4. **Status** - Check your Hunter stats and progress
+5. **Shop** - Buy items (only available at shop)
+6. **Shadow Army** - View your extracted shadows (Shadow Monarch only)
+7. **Save Game** - Save your progress
+8. **Quit** - Exit the game
 
 **Combat Options:**
 1. **Attack** - Physical attack using your attack stat
 2. **Magic Attack** - Magical attack using MP
 3. **Use Potion** - Heal 50 HP if you have potions
 4. **Run** - Attempt to flee from combat (50% success rate)
+5. **Summon Shadow** - Command a shadow to fight (Shadow Monarch only)
 
 ### Locations
 
-- **Peaceful Town**: Starting area with shop access
-- **Dark Forest**: Dangerous area with goblins and wolves
-- **Dragon's Cave**: High-level area with powerful dragons
-- **Item Shop**: Buy weapons, armor, and potions
+- **Hunter Association**: Central hub for all hunters
+- **Dungeon Gate**: Enter dungeons with various difficulty levels
+- **Hunter's Shop**: Buy weapons, armor, and potions
+- **Training Ground**: Improve your stats through training
 
-### Progression
+### Hunter Ranks
 
-- Gain experience and gold by defeating enemies
-- Level up to increase your stats
-- Buy better equipment from the shop
-- Explore more dangerous areas as you grow stronger
+Progress through ranks as you level up:
+- **E-Rank**: Level 0+ (Starting rank)
+- **D-Rank**: Level 10+
+- **C-Rank**: Level 25+
+- **B-Rank**: Level 50+
+- **A-Rank**: Level 100+
+- **S-Rank**: Level 200+
+- **National Level**: Level 500+
+
+### Shadow Monarch System
+
+- 10% chance of double awakening during character creation
+- Extract shadows from defeated enemies
+- Shadow ranks: Soldier → Mage → Knight → General → Monarch
+- Each shadow has unique abilities and stats
+- Build your army to become the true Shadow Monarch
+
+### Dungeon System
+
+Choose your difficulty:
+- **Easy**: Low risk, low rewards (Level 1-5)
+- **Normal**: Balanced gameplay (Level 3-10)
+- **Hard**: High risk, high rewards (Level 8-20)
+- **Hell**: Extreme risk, extreme rewards (Level 15-50)
+
+### Daily Quests
+
+Complete daily quests for bonus rewards:
+- Kill 10 Monsters
+- Dungeon Clear
+- Shadow Extraction
+- Survival Test
 
 ## Game Tips
 
-- Start by exploring the forest to gain experience
-- Save your gold for better weapons and armor
-- Keep potions handy for tough battles
-- The dragon is very powerful - prepare before facing it
-- Magic attacks use MP, so manage your resources carefully
+- Start with Easy dungeons to build experience
+- Train at the Training Ground to boost stats
+- Save gold for better equipment
+- Shadow Monarchs should extract shadows whenever possible
+- Higher rank dungeons give better rewards but are much harder
+- Complete daily quests for bonus EXP and gold
 
 ## Example Gameplay
 
 ```
-⚔️  ETERNAL REALMS - Text RPG ⚔️
-========================================
+🌑 SOLO LEVELING: The System 🌑
+==================================================
 
-=== CHARACTER CREATION ===
-Enter your character's name: Aragorn
+=== HUNTER AWAKENING ===
+Enter your name: Jinwoo
 
-Choose your class:
-1. Warrior - High HP and attack, low magic
-2. Mage - High magic, low HP
-3. Rogue - Balanced stats, high attack
-4. Cleric - Good magic and healing
+Choose your Hunter class:
+1. Fighter - Balanced combat specialist
+2. Tanker - High defense and HP
+3. Ranger - Ranged combat expert
+4. Assassin - High attack, low defense
+5. Healer - Support and recovery
+6. Mage - Magical attacks
 
-Enter choice (1-4): 1
+Enter choice (1-6): 1
 
-Welcome, Aragorn the Warrior!
-Your adventure begins...
+🎯 Welcome, Jinwoo the Fighter!
+📊 Initial Rank: E-Rank
 
-=== Peaceful Town ===
-A quiet town where adventurers rest and prepare.
-Exits: north, east
+[SYSTEM] Hunter awakening complete. System interface activating...
+[SYSTEM] Daily quest generated. Check your status for details.
+[SYSTEM] WARNING: Double awakening detected! Shadow extraction abilities unlocked.
+🌑 You have awakened as a Shadow Monarch!
+Your journey as a Hunter begins...
+
+=== Hunter Association ===
+The central hub for all hunters. Take on raids and get information.
+Exits: north, east, west
 
 === MAIN MENU ===
-1. Explore
+1. Explore/Action
 2. Travel
 3. Inventory
 4. Status
-5. Shop (if in town)
-6. Save Game
-7. Quit
+5. Shop (if available)
+6. Shadow Army (if Shadow Monarch)
+7. Save Game
+8. Quit
 
 Enter choice: 2
 
-Available exits: north, east
+Available exits: north, east, west
 Enter direction to travel: north
 You travel north...
 
-=== Dark Forest ===
-A mysterious forest filled with dangerous creatures.
-Exits: south, north
-You sense dangerous creatures nearby...
+=== Dungeon Gate ===
+Mysterious gates that lead to dungeons filled with monsters.
+Exits: south
 
 Enter choice: 1
 
-⚔️  COMBAT: Aragorn vs Goblin!
+Choose dungeon difficulty:
+1. Easy (Low rewards, safe)
+2. Normal (Balanced)
+3. Hard (High rewards, dangerous)
+4. Hell (Extreme risk, extreme rewards)
+5. Cancel
 
-Aragorn: 150/150 HP
-Goblin: 30/30 HP
+Enter choice: 2
+
+🌟 Entering NORMAL Dungeon (Level 7)
+
+--- Enemy 1/5 ---
+⚔️  COMBAT: Jinwoo vs Orc!
+
+Jinwoo: 120/120 HP
+Orc: 170/170 HP
 
 Combat Options:
 1. Attack
 2. Magic Attack
 3. Use Potion
 4. Run
+5. Summon Shadow
 Choose action: 1
-You deal 17 damage!
+You deal 19 damage!
 
-Victory! You defeated Goblin!
-Gained 15 EXP and 10 gold!
+Victory! You defeated Orc!
+Gained 40 EXP and 25 gold!
+🌑 Shadow extracted: Shadow Orc (Shadow Knight)!
+
+🎉 Daily Quest Complete: Kill 10 Monsters!
+Rewards: 100 EXP, 50 Gold
 ```
 
 ## File Structure
 
 ```
 Simple-App/
-├── main.py              # Main game application
-├── requirements.txt     # Dependencies (none required)
-├── README.md           # This file
-├── rpg_save.json      # Save game file (created automatically)
-└── .git/              # Git repository
+├── main.py                    # Main game application
+├── requirements.txt           # Dependencies (none required)
+├── README.md                 # This file
+├── solo_leveling_save.json   # Save game file (created automatically)
+└── .git/                    # Git repository
 ```
 
-## Game Classes & Stats
+## Hunter Classes & Stats
 
-### Character Classes
-- **Warrior**: 150 HP, 50 MP, 15 ATK, 8 DEF, 3 MAG
-- **Mage**: 70 HP, 100 MP, 5 ATK, 3 DEF, 20 MAG
-- **Rogue**: 90 HP, 50 MP, 18 ATK, 4 DEF, 8 MAG
-- **Cleric**: 100 HP, 80 MP, 8 ATK, 6 DEF, 15 MAG
+### Hunter Classes
+- **Fighter**: 120 HP, 50 MP, 12 ATK, 6 DEF, 5 MAG
+- **Tanker**: 150 HP, 50 MP, 8 ATK, 10 DEF, 3 MAG
+- **Ranger**: 100 HP, 50 MP, 14 ATK, 4 DEF, 6 MAG
+- **Assassin**: 90 HP, 50 MP, 16 ATK, 3 DEF, 8 MAG
+- **Healer**: 100 HP, 80 MP, 6 ATK, 5 DEF, 12 MAG
+- **Mage**: 80 HP, 120 MP, 5 ATK, 3 DEF, 18 MAG
 
 ### Enemies
 - **Goblin**: Level 1, 30 HP, weak but common
-- **Wolf**: Level 2, 40 HP, moderate threat
+- **Orc**: Level 3, 60 HP, moderate threat
+- **Wolf**: Level 2, 40 HP, fast attacker
+- **Troll**: Level 5, 100 HP, high defense
 - **Ancient Dragon**: Level 10, 200 HP, boss-level enemy
+- **Stone Giant**: Level 15, 300 HP, ultimate challenge
 
 ### Items
-- **Iron Sword**: +8 Attack
-- **Magic Staff**: +10 Magic
-- **Sharp Dagger**: +6 Attack
-- **Leather Armor**: +5 Defense
+- **Hunter's Dagger**: +6 Attack
+- **Knight's Sword**: +12 Attack
+- **Hunter's Bow**: +8 Attack
+- **Mage Staff**: +15 Magic
+- **Hunter's Armor**: +8 Defense
 - **Health Potion**: Restores 50 HP
+- **Mana Potion**: Restores 30 MP
 
 ## Contributing
 
 Feel free to fork this project and submit pull requests with new features like:
-- Additional character classes
-- More enemies and locations
-- Quest system
-- Equipment durability
-- Magic spells system
+- Additional Hunter classes and abilities
+- More enemies and dungeon types
+- Advanced shadow mechanics
+- Equipment upgrade system
+- Guild system
+- PvP battles
 
 ## License
 
