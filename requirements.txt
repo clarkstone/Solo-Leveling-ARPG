@@ -1,0 +1,9 @@
+# Simple Task Manager - Requirements
+# This app uses only Python standard library modules
+# No external dependencies required
+
+# Python version requirement
+python>=3.6
+
+# Optional: For enhanced terminal colors (install with: pip install colorama)
+# colorama>=0.4.4
