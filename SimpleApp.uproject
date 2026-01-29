@@ -1,0 +1,32 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "5.7.2",
+	"Category": "",
+	"Description": "Solo Leveling ARPG - Complete Power Systems with Alpha 1.0 Optimization",
+	"Modules": [
+		{
+			"Name": "SimpleApp",
+			"Type": "Runtime",
+			"LoadingPhase": "Default",
+			"AdditionalDependencies": [
+				"Engine",
+				"CoreUObject",
+				"Engine",
+				"Core",
+				"InputCore",
+				"UMG",
+				"Slate",
+				"SlateCore"
+			]
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "ModelingToolsEditorMode",
+			"Enabled": true,
+			"TargetAllowList": [
+				"Editor"
+			]
+		}
+	]
+}
