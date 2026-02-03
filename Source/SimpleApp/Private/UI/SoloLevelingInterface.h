@@ -4,6 +4,7 @@
 #include "Components/ActorComponent.h"
 #include "Components/WidgetComponent.h"
 #include "GameFramework/Character.h"
+#include "PowerSystemCore.h"
 #include "SoloLevelingInterface.generated.h"
 
 UENUM(BlueprintType)
@@ -11,33 +12,77 @@ enum class EUIState : uint8
 {
     UI_Hidden,
     UI_MainHUD,
-    UI_SystemInterface,
+    UI_ClassSelection,
+    UI_PowerPathInterface,
+    UI_AbilityBar,
+    UI_CharacterStats,
     UI_Inventory,
     UI_QuestLog,
-    UI_CharacterStats,
     UI_Dialogue,
     UI_Cutscene
 };
 
 USTRUCT(BlueprintType)
-struct FPowerSystemDisplayData
+struct FPowerPathDisplayData
 {
     GENERATED_BODY()
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite)
-    FString SystemName;
+    FString PathName;
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite)
-    float PowerLevel;
+    ECoreClass CoreClass;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    EPowerRank CurrentRank;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    int32 CurrentExperience;
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite)
     bool bIsActive;
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite)
-    FLinearColor SystemColor;
+    bool bIsUnlocked;
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite)
-    FString StatusText;
+    FLinearColor PathColor;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    FString RankTitle;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    TArray<FAbilityData> CurrentAbilities;
+};
+
+USTRUCT(BlueprintType)
+struct FAbilityDisplayData
+{
+    GENERATED_BODY()
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    FString AbilityName;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    FString Description;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    int32 ManaCost;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    float Cooldown;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    float CurrentCooldown;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    UTexture2D* Icon;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    bool bIsAvailable;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    int32 SlotIndex;
 };
 
 UCLASS()
@@ -52,80 +97,90 @@ public:
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Interface")
     EUIState CurrentUIState;
 
+    // Class System Manager Reference
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Interface")
+    class UClassSystemManager* ClassSystemManager;
+
     // UI Components
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Interface")
     class UWidgetComponent* MainHUD;
 
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Interface")
-    class UWidgetComponent* SystemInterface;
+    class UWidgetComponent* ClassSelectionWidget;
 
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Interface")
-    class UWidgetComponent* DialogueUI;
+    class UWidgetComponent* PowerPathWidget;
 
-    // Interface Configuration
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Interface")
-    bool bShowSystemInterface;
-
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Interface")
-    bool bShowMinimalHUD;
-
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Interface")
-    float InterfaceFadeSpeed;
-
-    // Power System Display
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Interface")
-    TArray<FPowerSystemDisplayData> ActivePowerSystems;
+    class UWidgetComponent* AbilityBarWidget;
+
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Interface")
+    class UWidgetComponent* CharacterStatsWidget;
+
+    // UI State Management
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Interface")
+    EUIState CurrentUIState;
+
+    // UI Components
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Interface")
+    class UWidgetComponent* MainHUD;
+
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Interface")
+
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UI")
+    class UWidget* PowerPathWidget;
+
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UI")
+    class UWidget* AbilityBarWidget;
+
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UI")
+    class UWidget* CharacterStatsWidget;
 
     // Override UActorComponent functions
     virtual void BeginPlay() override;
     virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
-    // Initialization
-    UFUNCTION(BlueprintCallable, Category = "Interface")
-    void Initialize();
+    // UI Management
+    UFUNCTION(BlueprintCallable, Category = "UI")
+    void ShowInterface();
 
-    // UI State Management
-    UFUNCTION(BlueprintCallable, Category = "Interface")
-    void ShowInterface(EUIState UIState);
-
-    UFUNCTION(BlueprintCallable, Category = "Interface")
+    UFUNCTION(BlueprintCallable, Category = "UI")
     void HideInterface();
 
-    UFUNCTION(BlueprintCallable, Category = "Interface")
-    void ToggleSystemInterface();
+    UFUNCTION(BlueprintCallable, Category = "UI")
+    void ToggleInterface();
 
-    // Power System Interface
-    UFUNCTION(BlueprintCallable, Category = "Interface")
-    void UpdatePowerSystemDisplay(TArray<FPowerSystemDisplayData> Systems);
+    UFUNCTION(BlueprintCallable, Category = "UI")
+    bool IsInterfaceVisible() const;
 
-    UFUNCTION(BlueprintCallable, Category = "Interface")
-    void ShowPowerSystemNotification(FString Message, FLinearColor Color);
+    // Class Selection UI
+    UFUNCTION(BlueprintCallable, Category = "UI")
+    void ShowClassSelection();
 
-    UFUNCTION(BlueprintCallable, Category = "Interface")
-    void DisplaySystemStats();
+    UFUNCTION(BlueprintCallable, Category = "UI")
+    void HideClassSelection();
 
-    // HUD Functions
-    UFUNCTION(BlueprintCallable, Category = "Interface")
-    void UpdateHealthBar(float Health, float MaxHealth);
+    UFUNCTION(BlueprintCallable, Category = "UI")
+    void OnClassSelected(ECoreClass SelectedClass);
 
-    UFUNCTION(BlueprintCallable, Category = "Interface")
-    void UpdatePowerBar(float Power, float MaxPower);
+    // Power Path UI
+    UFUNCTION(BlueprintCallable, Category = "UI")
+    void ShowPowerPathInterface();
 
-    UFUNCTION(BlueprintCallable, Category = "Interface")
-    void ShowDamageNumber(FVector Location, float Damage, bool bIsCritical);
+    UFUNCTION(BlueprintCallable, Category = "UI")
+    void HidePowerPathInterface();
 
-    UFUNCTION(BlueprintCallable, Category = "Interface")
-    void ShowComboDisplay(TArray<FName> Combo);
+    UFUNCTION(BlueprintCallable, Category = "UI")
+    void UpdatePowerPathDisplay();
 
-    // Dialogue System
-    UFUNCTION(BlueprintCallable, Category = "Interface")
-    void ShowDialogue(FString SpeakerName, FString DialogueText, TArray<FString> Choices);
+    UFUNCTION(BlueprintCallable, Category = "UI")
+    void OnPathUnlocked(const FString& PathName, ECoreClass CoreClass);
 
-    UFUNCTION(BlueprintCallable, Category = "Interface")
-    void HideDialogue();
+    UFUNCTION(BlueprintCallable, Category = "UI")
+    void OnPathActivated(const FString& PathName, bool bActivated);
 
-    UFUNCTION(BlueprintCallable, Category = "Interface")
-    void ProcessDialogueChoice(int32 ChoiceIndex);
+    UFUNCTION(BlueprintCallable, Category = "UI")
+    void OnRankUp(EPowerRank OldRank, EPowerRank NewRank);
 
     // System Notifications
     UFUNCTION(BlueprintCallable, Category = "Interface")
